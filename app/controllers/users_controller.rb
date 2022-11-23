@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if @user
       session[:user_id] = @user.id
 
-      render("test/login_success")
+      redirect_to("/test/login_success")
     end
   end
 
