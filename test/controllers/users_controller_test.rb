@@ -17,7 +17,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference("User.count") do
-      post users_url, params: { user: { address: @user.address, name: @user.name, phone: @user.phone } }
+      post users_url, params: { user: { name: @user.name, password: @user.password } }
     end
 
     assert_redirected_to user_url(User.last)
@@ -34,7 +34,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { address: @user.address, name: @user.name, phone: @user.phone } }
+    patch user_url(@user), params: { user: { name: @user.name, password: @user.password } }
     assert_redirected_to user_url(@user)
   end
 

@@ -1,0 +1,45 @@
+.display-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    /*上下*/
+    align-items: center;
+    /*左右*/
+    justify-content: center;
+    margin-top: 200px;
+
+    background-color: #f3f3f3;
+    /* border: 4px solid rgb(0, 0, 0); */
+    width: min-content;
+    padding: 0px 160px 80px;
+
+    border-radius: 8px;
+
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    
+    
+}
+
+.form-last-button {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-top: 16px;
+
+}
+
+.input-box {
+    border-bottom: 0.5px solid rgb(39, 39, 39);
+
+}
+
+.button-normal {
+    border: 1px solid rgb(163, 163, 163);
+    margin: 4px 0 ;
+    background-color:#f3ede3;
+}

@@ -1,0 +1,24 @@
+
+
+<div class="display-center">
+    <div class="login-form">
+        <%= form_tag("/login", method: "post") do %>
+        <div>
+            <h1>ログイン</h1>
+        </div>
+        <div>
+            <p>ユーザー名</p>
+            <input class="input-box" name="name">
+        </div>
+
+        <div>
+            <p>パスワード</p>
+            <input class="input-box" name="password" type="password">
+        </div>
+
+        <div class="form-last-button">
+            <input class="button-normal" type="submit" value="ログイン">
+        </div>
+        <% end %>
+    </div>
+</div>

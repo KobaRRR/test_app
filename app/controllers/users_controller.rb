@@ -1,6 +1,17 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
 
+  def login
+    @user = User.find_by(name: params[:name], password: params[:password])
+    if @user
+      session[:user_id] = @user.id
+
+      render("test/login_success")
+    end
+  end
+
+
+
   # GET /users or /users.json
   def index
     @users = User.all
@@ -65,6 +76,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :address, :phone)
+      params.require(:user).permit(:name, :password)
     end
 end

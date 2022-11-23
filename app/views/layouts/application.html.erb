@@ -5,12 +5,28 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <%= stylesheet_link_tag "sanitize", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "general", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "main", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <header>
+      <div class="header">
+        <div>
+          <%= link_to("ログイン", "/", {method: "post", class:"header-text" }) %>
+        </div>
+        <div>
+          <%= link_to("新規登録", "/users/new", class:"header-text") %>
+        </div>
+        <div>
+          <%= link_to("ログアウト", "/logout", {method: "post", class:"header-text" }) %>
+        </div>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
