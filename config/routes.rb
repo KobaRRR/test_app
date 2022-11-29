@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
-  resources :users
-  get 'test/index'
-  get "test/login_success" => "test#login_success"
+  get 'bcard/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get "test/index" => "test#index"
-  get "/" =>"test#login_form"
 
-  post "login" => "users#login"
+  resources :users
+  get "test/home"
+  get 'test/index'
+  get "/" =>"test#login_form"
+  get "test/login_success" => "test#login_success"
+  post "login" => "test#login"
+  get "logout" => "test#logout"
+  get "test/index" => "test#index"
+
 end

@@ -1,8 +1,54 @@
+/* display:flex;するためのクラス */
+.flex-parent {
+    display: flex;
+}
+
 .display-center {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.flash-notice {
+    /* アニメーションの設定 */
+    animation: smooth-fadein-out;
+    animation-duration: 3.5s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    opacity: 0;
+
+    /* 通知っぽいスタイル */
+    color: rgb(245, 245, 255) !important;
+    background-color: #202020;
+    font-size: 16px;
+    margin: 4px;
+    padding: 0px;
+    width: 320px;
+    height: 32px;
+    position: absolute;
+    right: 24px;
+    top: 32px;
+    border-radius: 40px;
+
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* padding: 0px 4px; */
+    /* text-align:center;
+    height: 24px;
+    line-height: 24px; */
+    
+  }
+
+  @keyframes smooth-fadein-out {
+    0%, 100% {opacity: 0;}
+    50% {opacity: 1;}
+  }
+
 
 .login-form {
     display: flex;
@@ -21,8 +67,8 @@
     border-radius: 8px;
 
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-    
-    
+
+
 }
 
 .form-last-button {
@@ -43,3 +89,6 @@
     margin: 4px 0 ;
     background-color:#f3ede3;
 }
+
+
+/* home */

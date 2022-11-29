@@ -16,17 +16,46 @@
   <body>
     <header>
       <div class="header">
-        <div>
-          <%= link_to("ログイン", "/", {method: "post", class:"header-text" }) %>
+
+        <div class="header-title">
+          <%= @headerTitle %>
         </div>
-        <div>
-          <%= link_to("新規登録", "/users/new", class:"header-text") %>
-        </div>
-        <div>
-          <%= link_to("ログアウト", "/logout", {method: "post", class:"header-text" }) %>
-        </div>
+
+        <% @user = User.find_by(id: session[:user_id]) %>
+        <% if session[:user_id] %>
+          
+          <div class="header-text">
+            <%= @user.name  %>
+          </div>
+          <div>
+            <%= link_to "Logout", "/logout", method: "post", class:"header-text" %>
+          </div>
+          <div>
+            <%= link_to "Usersindex", "/users", class:"header-text" %>
+          </div>
+          <div>
+            <%= link_to "TOP", "/test/home", class:"header-text" %>
+          </div>
+
+        <% else %>
+
+          <div>
+            <%= link_to "ログイン", "/", class:"header-text" %>
+          </div>
+          <div>
+            <%= link_to "新規登録", "/users/new", class:"header-text" %>
+          </div>
+
+        <% end %>
       </div>
+
     </header>
-    <%= yield %>
-  </body>
+      <div class="flex-parent">
+        <% flash.each do |key, value| %>
+        <p class="flash-notice"><%= value %></p>
+        
+      <% end %>
+      </div>
+      <%= yield %>
+    </body>
 </html>

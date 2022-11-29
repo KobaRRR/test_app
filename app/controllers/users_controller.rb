@@ -1,17 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
 
-  def login
-    @user = User.find_by(name: params[:name], password: params[:password])
-    if @user
-      session[:user_id] = @user.id
-
-      redirect_to("/test/login_success")
-    end
-  end
-
-
-
   # GET /users or /users.json
   def index
     @users = User.all

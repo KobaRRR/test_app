@@ -3,7 +3,8 @@
 
 
 .header {
-    background-color: #708aa6;
+    /* background-color: #708aa6; */
+    background-color: #fcfcfc;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 0px 4px;
     height: 32px;
     display: flex;
@@ -19,14 +20,25 @@
     color: #4b627a;
 }
 
+.header-title {
+    color: #2c353f;
+    font-size: 14px;
+    position: absolute;
+    /*正攻法がわからない*/
+    margin-right: 50%;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center; */
+}
+
 body{
-    background-color: #ced7e0;
-    
+    /* background-color: #ced7e0; */
+    background-color: none;
 }
 
 h1{
     color: rgb(146, 146, 146);
-    font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', '游明朝','Yu Mincho', '游明朝体', 'YuMincho','ＭＳ Ｐ明朝', 'MS PMincho', serif; 
+    font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', '游明朝','Yu Mincho', '游明朝体', 'YuMincho','ＭＳ Ｐ明朝', 'MS PMincho', serif;
     /* margin-left: 10%; */
 }
 
@@ -37,7 +49,7 @@ hr {
     border: none;
     color: #ff0000;
     }
-    
+
 
 
 .main_content{
