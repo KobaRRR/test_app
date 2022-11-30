@@ -57,18 +57,14 @@
     align-items: center;
     /*左右*/
     justify-content: center;
-    margin-top: 200px;
 
+    margin-top: 200px;    
     background-color: #f3f3f3;
     /* border: 4px solid rgb(0, 0, 0); */
     width: min-content;
     padding: 0px 160px 80px;
-
     border-radius: 8px;
-
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-
-
 }
 
 .form-last-button {
@@ -90,5 +86,9 @@
     background-color:#f3ede3;
 }
 
+.link_text {
+    text-decoration: none;
+    color: #4b627a;
+}
 
 /* home */

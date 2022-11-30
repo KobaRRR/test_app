@@ -1,4 +1,5 @@
 class TestController < ApplicationController
+  before_action :authenticate_user, only: [:home, :index]
   def index
   end
 
@@ -11,12 +12,12 @@ class TestController < ApplicationController
   end
 
   def login
-    @user = User.find_by(name: params[:name], password: params[:password])
-    if @user
-      session[:user_id] = @user.id
-      session[:user_name] = @user.name
+    @current_user = User.find_by(name: params[:name], password: params[:password])
+    if @current_user
+      session[:user_id] = @current_user.id
+      session[:user_name] = @current_user.name #ホントはIDだけ取得のほうがいいんだけどね
       flash[:notice] = "Successfully logged in "
-      flash[:notice] << "Hello、#{@user.name}"
+      flash[:notice] << "Hello、#{@current_user.name}"
       redirect_to "/test/home"
     else
       # @name = params[:name]
@@ -34,7 +35,26 @@ class TestController < ApplicationController
     flash[:notice] << " Bye、#{@user.name}"
     session[:user_id] = nil
     session[:user_name] = nil
+    @current_user = nil
     redirect_to "/"
+  end
+
+  
+  #ログインしていない状態でアクセスしたらログイン画面へ
+  def authenticate_user
+    if session[:user_id]
+      @current_user = User.find_by(id: session[:user_id])
+    else
+      flash[:notice] = "please log in"
+      redirect_to '/'
+    end
+    #  if session[:user_id]
+    #   @current_user = User.find_by(id: session[:user_id])
+    #  end
+    #  if session[:user_id].nil? # or blank?
+    #   flash[:notice] = "please log in"
+    #   redirect_to '/'
+    # end
   end
 
 end

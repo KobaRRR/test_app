@@ -21,11 +21,11 @@
           <%= @headerTitle %>
         </div>
 
-        <% @user = User.find_by(id: session[:user_id]) %>
+        <% @current_user = User.find_by(id: session[:user_id]) %>
         <% if session[:user_id] %>
           
           <div class="header-text">
-            <%= @user.name  %>
+            <%= @current_user.name  %>
           </div>
           <div>
             <%= link_to "Logout", "/logout", method: "post", class:"header-text" %>

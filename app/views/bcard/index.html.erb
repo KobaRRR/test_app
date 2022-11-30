@@ -1,2 +1,12 @@
 <h1>Bcard#index</h1>
 <p>Find me in app/views/bcard/index.html.erb</p>
+<%= link_to 'Add-Card', '/business_card/new', class: 'link_text' %>
+
+<div class="flex-parent">
+    <% @BCards.each do |bcard| %>
+        <p>
+        <%= bcard.name %>
+        </p>
+    <% end %>
+
+</div>
