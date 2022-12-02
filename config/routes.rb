@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   # bcard_routes
   get 'bcard/index'
   get 'bcard/new'
+  post 'bcard/create' => 'bcard#create'
 
 end

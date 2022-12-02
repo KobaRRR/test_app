@@ -1,0 +1,11 @@
+<h1>Bcard#new</h1>
+<p>Find me in app/views/bcard/new.html.erb</p>
+
+<%= form_with model: @businesscard, url: '/bcard/create', method: 'post' do |form| %>
+    <h2>company</h2>
+    <%= form.text_field :name %>
+    <h2>customer</h2>
+    <%= form.text_field :bank_name %>
+    <br>
+    <%= form.submit %>
+<% end %>
