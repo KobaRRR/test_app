@@ -1,11 +1,30 @@
 <h1>Bcard#new</h1>
 <p>Find me in app/views/bcard/new.html.erb</p>
-
-<%= form_with model: @businesscard, url: '/bcard/create', method: 'post' do |form| %>
-    <h2>company</h2>
+<% if @bcard.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @bcard.errors.full_messages.each do |message| %>
+        <li class="flash-notice"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @message %>
+  <div class="flash-notice"><%= @message %></div>
+<% end %>
+<%= form_with model: @bcard, url: '/bcard/create', local: true do |form| %>
+    <h2>Company</h2>
+    <%= form.text_field :company_name %>
+    <h2>Customer</h2>
     <%= form.text_field :name %>
-    <h2>customer</h2>
-    <%= form.text_field :bank_name %>
+    <h2>Phone Number</h2>
+    <%= form.text_field :phone_num %>
+    <h2>Department</h2>
+    <%= form.text_field :department %>
+    <h2>Division</h2>
+    <%= form.text_field :division %>
+    <h2>Remarks</h2>
+    <%= form.text_field :remarks %>
     <br>
     <%= form.submit %>
 <% end %>

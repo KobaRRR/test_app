@@ -1,0 +1,22 @@
+<h1>Bcard#edit</h1>
+<p>Find me in app/views/bcard/edit.html.erb</p>
+
+<%= form_with model: @bcard, url: "/bcard/update/#{@bcard.id}", local: true do |form| %>
+    <div class="detail-title">Company</div>
+    <%= form.text_field :company_name %>
+    <div class="detail-title">Customer</div>
+    <%= form.text_field :name %>
+    <div class="detail-title">Phone Number</div>
+    <%= form.text_field :phone_num %>
+    <div class="detail-title">Department</div>
+    <%= form.text_field :department %>
+    <div class="detail-title">Division</div>
+    <%= form.text_field :division %>
+    <div class="detail-title">Remarks</div>
+    <%= form.text_area :remarks, class: "remarks"%> 
+    <!-- クラスつけるときはこの形しかできないらしい -->
+    <br>
+    <%= form.submit %>
+<% end %>
+<br>
+<%= link_to "destroy", "/bcard/destroy/#{@bcard.id}", class: 'link_text' %> 

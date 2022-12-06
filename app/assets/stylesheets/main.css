@@ -92,3 +92,51 @@
 }
 
 /* home */
+
+
+.bcards {
+    margin: 40px;
+}
+.theader {
+    color: gray;
+    font-size: 8px;
+}
+
+/* .bcards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+td {
+    border-collapse: collapse;
+    border: 1px solid gray;
+
+}
+
+.bcards .td-company {
+    color:#202020;
+    width: 12em;
+}
+.bcards .td-name {
+    color:#222222;
+    width: 8em;
+}
+.bcards .td-phone_num {
+    color:#525252;
+    width: 8em;
+}
+
+.detail-title {
+    margin: 40px 0px 4px;
+    color: rgb(146, 146, 146);
+    font-family: 'ヒラギノ明朝 Pro W3', 'Hiragino Mincho Pro', '游明朝','Yu Mincho', '游明朝体', 'YuMincho','ＭＳ Ｐ明朝', 'MS PMincho', serif;
+}
+
+.remarks {
+    margin-top: 0px;
+    width: 40%;
+    height: 80px;
+    color: rgb(15, 15, 15);
+    font-size: 14px;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}

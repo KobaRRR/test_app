@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   # bcard_routes
   get 'bcard/index'
   get 'bcard/new'
-  post 'bcard/create' => 'bcard#create'
+  post 'bcard/create'
+  get 'bcard/edit/:id' => 'bcard#edit'
+  get 'bcard/destroy/:id' => 'bcard#destroy'
+  patch '/bcard/update/:id' => 'bcard#update'
 
 end
