@@ -113,6 +113,19 @@ td {
 
 }
 
+.bcards .th-company {
+    color:#525252;
+    width: 12em;
+}
+.bcards .th-name {    
+    color:#525252;
+    width: 8em;
+}
+.bcards .th-phone_num {
+    color:#525252;
+    width: 8em;
+}
+
 .bcards .td-company {
     color:#202020;
     width: 12em;

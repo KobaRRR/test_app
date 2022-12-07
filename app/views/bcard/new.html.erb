@@ -13,18 +13,21 @@
   <div class="flash-notice"><%= @message %></div>
 <% end %>
 <%= form_with model: @bcard, url: '/bcard/create', local: true do |form| %>
-    <h2>Company</h2>
-    <%= form.text_field :company_name %>
-    <h2>Customer</h2>
-    <%= form.text_field :name %>
-    <h2>Phone Number</h2>
-    <%= form.text_field :phone_num %>
-    <h2>Department</h2>
-    <%= form.text_field :department %>
-    <h2>Division</h2>
-    <%= form.text_field :division %>
-    <h2>Remarks</h2>
-    <%= form.text_field :remarks %>
-    <br>
-    <%= form.submit %>
+<div class="detail-title">Company</div>
+<%= form.text_field :company_name %>
+<div class="detail-title">Customer</div>
+<%= form.text_field :name %>
+<div class="detail-title">Phone Number</div>
+<%= form.text_field :phone_num %>
+<div class="detail-title">Department</div>
+<%= form.text_field :department %>
+<div class="detail-title">Division</div>
+<%= form.text_field :division %>
+<div class="detail-title">Remarks</div>
+<%= form.text_area :remarks, class: "remarks"%> 
+<!-- クラスつけるときはこの形しかできないらしい -->
+<br>
+<%= form.submit %>
+<br>
+<br>
 <% end %>
