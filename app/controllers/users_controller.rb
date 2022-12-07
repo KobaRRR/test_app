@@ -22,11 +22,16 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to user_url(@user), notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
+    if @user.save
+      @current_user = User.find_by(user_params)
+      if @current_user
+        session[:user_id] = @current_user.id
+        session[:user_name] = @current_user.name #ホントはIDだけ取得のほうがいいんだけどね
+        flash[:notice] = "Successfully logged in "
+        flash[:notice] << "Hello、#{@current_user.name}"
+        redirect_to "/test/home"
+        # format.html { redirect_to user_url(@user), notice: "User was successfully created." }
+        # format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
