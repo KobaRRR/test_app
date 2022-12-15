@@ -21,7 +21,7 @@
           <%= @headerTitle %>
         </div>
 
-        <% @current_user = User.find_by(id: session[:user_id]) %>
+        <% @current_user = User.find_by(user_id: session[:user_id]) %>
         <% if session[:user_id] %>
           
           <div class="header-text">
@@ -33,9 +33,11 @@
           <div>
             <%= link_to "Cards", "/bcard/index", class:"header-text" %>
           </div>
+          <% if @current_user.authority == 99 %>
           <div>
-            <%= link_to "Usersindex", "/users", class:"header-text" %>
+            <%= link_to "Users", "/users/index", class:"header-text" %>
           </div>
+          <% end %>
           <div>
             <%= link_to "TOP", "/test/home", class:"header-text" %>
           </div>
@@ -43,10 +45,10 @@
         <% else %>
 
           <div>
-            <%= link_to "ログイン", "/", class:"header-text" %>
+            <%= link_to "sign in", "/", class:"header-text" %>
           </div>
           <div>
-            <%= link_to "新規登録", "/users/new", class:"header-text" %>
+            <%= link_to "sign up", "/users/new", class:"header-text" %>
           </div>
 
         <% end %>

@@ -4,21 +4,21 @@
     <div class="login-form">
         <%= form_tag("/login", method: "post") do %>
         <div>
-            <h1>ログイン</h1>
+            <h1>a</h1>
             <p><%= @msg %></p>
         </div>
         <div>
-            <p>ユーザー名</p>
-            <input class="input-box" name="name" value="<%= "#{@name}" %>">
+            <p>ID</p>
+            <input class="input-box" name="user_id" value="<%= "#{@user.user_id}" %>">
         </div>
 
         <div>
-            <p>パスワード</p>
-            <input class="input-box" name="password" type="password" value="<%= "#{@password}" %>">
+            <p>password</p>
+            <input class="input-box" name="password" type="password" value="<%= "#{@user.password}" %>">
         </div>
 
         <div class="form-last-button">
-            <input class="button-normal" type="submit" value="ログイン">
+            <input class="button-normal" type="submit" value="sign in">
         </div>
         <% end %>
     </div>

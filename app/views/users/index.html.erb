@@ -1,14 +1,22 @@
-<p style="color: green"><%= notice %></p>
-
+<h1>Users#index</h1>
+<p>Find me in app/views/users/index.html.erb</p>
 <h1>Users</h1>
 
 <div id="users">
   <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
+    <%= form_with model: user, url: "/users/edit/#{user.user_id}"  do |form| %>
+        <h2>id</h2>
+      <%= form.text_field :user_id %>
+        <h2>Name</h2>
+      <%= form.text_field :name %>
+        <h2>password</h2>
+      <%= form.text_field :password_digest %>
+        <h2>authority</h2>
+      <%= form.text_field :authority %>
+    <% end %>
+    <p> 
+      <%= link_to "Show this user", "/users/edit/#{user.user_id}" %>
     </p>
+    <br><hr><br><br><br>
   <% end %>
 </div>
-
-<%= link_to "New user", new_user_path %>

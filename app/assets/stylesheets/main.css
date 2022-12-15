@@ -86,7 +86,7 @@
     background-color:#f3ede3;
 }
 
-.link_text {
+.link-text {
     text-decoration: none;
     color: #4b627a;
 }
@@ -153,3 +153,29 @@ td {
     font-size: 14px;
     font-family:Georgia, 'Times New Roman', Times, serif
 }
+
+/* DDL */
+select {
+    /* 初期化 */
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 5px;
+    color: #333;
+    font-size: 16px;
+    padding: 0 10px;
+    height: 24px;
+    width: 240px;
+    position: relative;
+    background: #f1f1f1;
+
+    /* personally added */
+    margin-top: 1em;
+
+  }
+  
+  option[selected][disabled] {
+    display: none;
+  }
+

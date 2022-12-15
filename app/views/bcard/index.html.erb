@@ -1,6 +1,33 @@
 <h1>Bcard#index</h1>
 <p>Find me in app/views/bcard/index.html.erb</p>
-<%= link_to 'Add-Card', '/bcard/new', class: 'link_text' %>
+<%= link_to 'Add-Card', '/bcard/new', class: 'link-text' %>
+
+<!-- <% if @ddlValue %>
+<%= @ddlValue.company_name %>
+<% end %> -->
+
+<!-- <%= form_with url: "/bcard/index", method: "GET" do |ddl| %>
+    <div class="detail-title">group by</div>
+    <%= ddl.collection_select(:company_name, @ddlBCards, :company_name, :company_name ) %>
+    <%= ddl.submit "grouping" %>
+<% end %> -->
+
+<%= form_tag "/bcard/index", method: "GET" do%>
+    <div class="select">
+        <select name="company_name" id="ddl">
+            <% @ddlBCards.each do |bcard| %>
+            <option value="<%= bcard.company_name %>"><%=bcard.company_name %></option>
+            <% end %>
+            <% if @current_user.authority == 99 %>
+            <option value="all">all</option>
+            <% end %>
+            
+            <option value="default"  id="prompt" selected="selected">SortByCompany</option>
+        </select>
+        <input type="submit" value="Search" class="link-text">
+    </div>
+    
+<% end %>
 
 <div> <!-- class="display-center"-->
     <table class="bcards">
@@ -16,7 +43,7 @@
             <td class="td-name"><%= bcard.name %></td>
             <td class="td-phone_num"><%= bcard.phone_num %></td>
             <td><%= bcard.user_id %></td>
-            <td><%= link_to 'edit', "/bcard/edit/#{bcard.id}", class: 'link_text' %></td>
+            <td><%= link_to 'edit', "/bcard/edit/#{bcard.id}", class: 'link-text' %></td>
             
         </tr>
     <% end %>

@@ -1,7 +1,27 @@
 class BcardController < ApplicationController
-  before_action :authenticate_user
+
+  #ApplicationController
+    before_action :authenticate_user
+
   def index
-    @BCards = BusinessCard.where(user_id: @current_user.id)
+    #めちゃくちゃ見た目ごちゃっちゃった
+    @ddlBCards = BusinessCard.select(:company_name).group(:company_name)
+    # @ddlValue = BusinessCard.find_by(company_name: params[:company_name])
+    #DDL選択
+    if params[:company_name]
+
+      if params[:company_name] == 'all'
+        @BCards = BusinessCard.all
+      elsif params[:company_name] == 'default'
+       @BCards = BusinessCard.where(user_id: @current_user.user_id)
+      else
+        @BCards = BusinessCard.where(user_id: @current_user.user_id, company_name: params[:company_name])
+      end
+
+    else
+    #DDL未選択
+      @BCards = BusinessCard.where(user_id: @current_user.user_id)
+    end
   end
 
   def new
@@ -10,7 +30,7 @@ class BcardController < ApplicationController
 
   def create
       @bcard = BusinessCard.new(bcard_params)
-      @bcard.user_id = @current_user.id
+      @bcard.user_id = @current_user.user_id
       if @bcard.save
       flash[:notice] = "created"
       redirect_to '/bcard/index'
@@ -34,16 +54,6 @@ class BcardController < ApplicationController
     @bcard = BusinessCard.find_by(id: params[:id])
     @bcard.destroy
     redirect_to '/bcard/index'
-  end
-
-  #ログインしていない状態でアクセスしたらログイン画面へ
-  def authenticate_user
-    if session[:user_id]
-      @current_user = User.find_by(id: session[:user_id])
-    else
-      flash[:notice] = "please log in"
-      redirect_to '/'
-    end
   end
 
   private

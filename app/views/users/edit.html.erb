@@ -1,10 +1,19 @@
-<h1>Editing user</h1>
+<h1>Users#edit</h1>
+<p>Find me in app/views/users/edit.html.erb</p>
 
-<%= render "form", user: @user %>
-
-<br>
-
-<div>
-  <%= link_to "Show this user", @user %> |
-  <%= link_to "Back to users", users_path %>
-</div>
+<div id="users">
+      <%= form_with model: @user, url: "/users/update/#{@user.user_id}", local: true  do |form| %>
+          <h2>ID</h2>
+        <%= form.text_field :user_id %>
+          <h2>Name</h2>
+        <%= form.text_field :name %>
+          <!-- <h2>password</h2>
+        <%= form.text_field :password %> -->
+          <h2>authority</h2>
+        <%= form.text_field :authority %>
+        <br>
+      <%= form.submit class: "link-text" %>
+      <% end %>
+      
+  
+  </div>

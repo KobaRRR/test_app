@@ -1,75 +1,60 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
 
-  # GET /users or /users.json
+  #ApplicationController
+    before_action :authenticate_user, except: [:new, :create]
+
+
   def index
     @users = User.all
   end
-
-  # GET /users/1 or /users/1.json
-  def show
-  end
-
-  # GET /users/new
+  
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
-  def edit
-  end
-
-  # POST /users or /users.json
   def create
     @user = User.new(user_params)
     if @user.save
-      @current_user = User.find_by(user_params)
+      @current_user = User.find_by(_user_params_but_password)
       if @current_user
-        session[:user_id] = @current_user.id
-        session[:user_name] = @current_user.name #ホントはIDだけ取得のほうがいいんだけどね
+        session[:user_id] = @current_user.user_id
+        session[:user_name] = @current_user.name
         flash[:notice] = "Successfully logged in "
         flash[:notice] << "Hello、#{@current_user.name}"
-        redirect_to "/test/home"
-        # format.html { redirect_to user_url(@user), notice: "User was successfully created." }
-        # format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
+      redirect_to '/bcard/index'
+    else 
+      flash[:notice] = "id and password should be filled in"
+      render '/users/new'
     end
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
+  def edit
+    @user = User.find_by(user_id: params[:user_id])
+  end
+
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to user_url(@user), notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /users/1 or /users/1.json
-  def destroy
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+    user = User.find_by(user_id: params[:upd_user_id])
+    if user.update(_user_params_but_password)
+    flash[:notice] = "Successfully logged in "
+    redirect_to '/users/index'
+    else
+      @msg = "failed to update information"
+      render "users/edit/#{params[:upd_user_id]}"
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def user_params
+      params.require(:user).permit(:user_id, :name, :password, :authority)
+    end
+
+    def _user_params_but_password
+      params.require(:user).permit(:user_id, :name)
+    end
+
     def set_user
       @user = User.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:name, :password)
-    end
 end

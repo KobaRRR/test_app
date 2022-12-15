@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  get 'users/index'
+  get 'users/new'
+  post 'users/create'
+  get 'users/edit/:user_id' => 'users#edit'
+  patch 'users/update/:upd_user_id' => 'users#update'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :users
   get 'test/home'
   get 'test/index'
   get '/' =>'test#login_form'
@@ -19,6 +23,7 @@ Rails.application.routes.draw do
   post 'bcard/create'
   get 'bcard/edit/:id' => 'bcard#edit'
   get 'bcard/destroy/:id' => 'bcard#destroy'
-  patch '/bcard/update/:id' => 'bcard#update'
+  patch 'bcard/update/:id' => 'bcard#update'
+  get 'bcard/index/:company_name' => 'bcard#index_group'
 
 end
