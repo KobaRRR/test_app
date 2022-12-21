@@ -21,15 +21,18 @@
             <% if @current_user.authority == 99 %>
             <option value="all">all</option>
             <% end %>
-            
+            <!-- afterbegin -->
             <option value="default"  id="prompt" selected="selected">SortByCompany</option>
+            <!-- beforeend-->
         </select>
         <input type="submit" value="Search" class="link-text">
     </div>
     
 <% end %>
 
-<div> <!-- class="display-center"-->
+<!-- class="display-center" -->
+<!-- テーブルでの表記はしない -->
+<!-- <div> 
     <table class="bcards">
         <tr>
             <th class="th-company">Company</th>
@@ -48,6 +51,28 @@
         </tr>
     <% end %>
     </table>
+</div> -->
 
-</div>
+<!-- デザイン -->
+
+<!-- コンテナを中央寄せにするだけ -->
+<div class="display-center">
+
+    <!-- コンテナ。bcard単位の入れ物で、max-width,min-widthを作る -->
+    <div class="bcard-container">
+        <% @BCards.each do |bcard| %>
+
+            <!-- bcardをいれる。個々の名前や会社名などの親要素 -->
+            <div class="bcard">
+                <div class="bcard-company"><%= bcard.company_name %></div>
+                <div class="bcard-name"><%= bcard.name %></div>
+                <div class="bcard-phone">phone:<%= bcard.phone_num %></div>
+
+            </div><!-- class="bcard" -->
+
+        <% end %>
+        
+    </div><!-- class="bcard-container" -->
+
+</div><!-- class="display-center" -->
 

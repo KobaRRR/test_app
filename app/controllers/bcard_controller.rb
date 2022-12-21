@@ -9,7 +9,6 @@ class BcardController < ApplicationController
     # @ddlValue = BusinessCard.find_by(company_name: params[:company_name])
     #DDL選択
     if params[:company_name]
-
       if params[:company_name] == 'all'
         @BCards = BusinessCard.all
       elsif params[:company_name] == 'default'

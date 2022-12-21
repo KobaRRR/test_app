@@ -1,0 +1,40 @@
+/* flexにして、max-widthのときに二列、min-widthのときに1列になるようにする。 */
+.bcard-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    min-width: 480px;
+    padding:40px;
+    /* background-color: rgb(92, 92, 92); */
+}
+
+.bcard {
+    width: 400px;
+    height: 160px;
+    background-color: rgb(128, 128, 128);
+    margin: 8px;
+
+}
+
+.bcard-company {
+    position: absolute;
+    margin-top: 8px;
+    margin-left: 8px;
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+.bcard-name {
+    position: absolute;
+    margin-top: 60px;
+    margin-left: 140px;
+    border-bottom: 1px solid, rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+.bcard-phone {
+    position: absolute;
+    margin-top: 120px;
+    margin-left: 72px;
+    font-size: 6px
+}

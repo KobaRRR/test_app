@@ -16,5 +16,5 @@ document.querySelector('#ddl').addEventListener('click', () =>
 
 const ddlEdit = () => {
     const prompt = document.querySelector('#prompt');
-    prompt.innerAdjacentHTML='default';
+    prompt.innerAdjacentHTML('beforeend', '<option value="default"  id="prompt" selected="selected">SortByCompany</option>');;
 }
