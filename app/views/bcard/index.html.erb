@@ -12,46 +12,30 @@
     <%= ddl.submit "grouping" %>
 <% end %> -->
 
-<%= form_tag "/bcard/index", method: "GET" do%>
-    <div class="select">
-        <select name="company_name" id="ddl">
-            <% @ddlBCards.each do |bcard| %>
-            <option value="<%= bcard.company_name %>"><%=bcard.company_name %></option>
-            <% end %>
-            <% if @current_user.authority == 99 %>
-            <option value="all">all</option>
-            <% end %>
-            <!-- afterbegin -->
-            <option value="default"  id="prompt" selected="selected">SortByCompany</option>
-            <!-- beforeend-->
-        </select>
-        <input type="submit" value="Search" class="link-text">
-    </div>
-    
-<% end %>
+<div class="search-header">
+    <div class="sort-form">
+        <%= form_with url: "/bcard/index", method: :get, local: true do |f| %>
+            <div class="select">
+                <select name="company_name" id="ddl">
+                    <% @ddlBCards.each do |bcard| %>
+                    <option value="<%= bcard.company_name %>"><%=bcard.company_name %></option>
+                    <% end %>
+                    <% if @current_user.authority == 99 %>
+                    <option value="all">all</option>
+                    <% end %>
+                    <option value="default"  id="prompt" selected="selected">Sort by company</option>
+                </select>
 
-<!-- class="display-center" -->
-<!-- テーブルでの表記はしない -->
-<!-- <div> 
-    <table class="bcards">
-        <tr>
-            <th class="th-company">Company</th>
-            <th class="th-name">Customer</th>
-            <th class="th-phone_num">Phone</th>
-        </tr>
-        
-    <% @BCards.each do |bcard| %>
-        <tr>
-            <td class="td-company"><%= bcard.company_name %></td>
-            <td class="td-name"><%= bcard.name %></td>
-            <td class="td-phone_num"><%= bcard.phone_num %></td>
-            <td><%= bcard.user_id %></td>
-            <td><%= link_to 'edit', "/bcard/edit/#{bcard.id}", class: 'link-text' %></td>
-            
-        </tr>
-    <% end %>
-    </table>
-</div> -->
+                <%= f.text_field :name, class: "search-box" , :placeholder => "  Search by name"%>
+
+                <input type="submit" value="Sort" class="link-text">
+            </div>  
+
+
+        <% end %>
+    </div>
+
+</div><!-- sort,search -->
 
 <!-- デザイン -->
 
@@ -63,14 +47,24 @@
         <% @BCards.each do |bcard| %>
 
             <!-- bcardをいれる。個々の名前や会社名などの親要素 -->
+            <%= link_to("/bcard/edit/#{bcard.id}") do %>
             <div class="bcard">
                 <div class="bcard-company"><%= bcard.company_name %></div>
+                <div class="bcard-department"><%= bcard.department %></div>
+                <div class="bcard-division"><%= bcard.division %></div>
                 <div class="bcard-name"><%= bcard.name %></div>
                 <div class="bcard-phone">phone:<%= bcard.phone_num %></div>
+            </div><!-- class="bcard" -->
+            <% end %>
+        <% end %>
+
+            <!-- 1枚だけのときに中央寄せにならないように追加 -->
+            <div id="bcard-hdn" class="bcard">
+                <div class="bcard-company"></div>
+                <div class="bcard-name"></div>
+                <div class="bcard-phone"></div>
 
             </div><!-- class="bcard" -->
-
-        <% end %>
         
     </div><!-- class="bcard-container" -->
 

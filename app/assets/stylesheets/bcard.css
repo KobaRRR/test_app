@@ -1,32 +1,54 @@
 /* flexにして、max-widthのときに二列、min-widthのときに1列になるようにする。 */
 .bcard-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     max-width: 1080px;
     min-width: 480px;
     padding:40px;
     /* background-color: rgb(92, 92, 92); */
+    font-family: serif;
+    margin: 0 auto;
 }
 
 .bcard {
     width: 400px;
-    height: 160px;
-    background-color: rgb(128, 128, 128);
-    margin: 8px;
-
+    height: 178px;
+    background-color: rgb(245, 245, 245);
+    margin: 20px 12px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    border-radius: 1px;
+    /* 全体をリンクにする。 */
+    text-decoration: none;
+    color: black;
 }
 
 .bcard-company {
     position: absolute;
-    margin-top: 8px;
-    margin-left: 8px;
+    margin-top: 12px;
+    margin-left: 12px;
     font-weight: lighter;
-    font-size: 12px;
+    font-size: 14px;
+}
+.bcard-department {
+    position: absolute;
+    margin-top: 42px;
+    margin-left: 120px;
+    /* font-weight: lighter; */
+    font-size: 6px;
+}
+.bcard-division {
+    position: absolute;
+    margin-top: 42px;
+    margin-left: 160px;
+    /* font-weight: lighter; */
+    font-size: 8px;
 }
 
 .bcard-name {
     position: absolute;
-    margin-top: 60px;
+    margin-top: 66px;
     margin-left: 140px;
     border-bottom: 1px solid, rgb(255, 255, 255);
     font-size: 20px;
@@ -35,6 +57,12 @@
 .bcard-phone {
     position: absolute;
     margin-top: 120px;
-    margin-left: 72px;
+    margin-left: 200px;
     font-size: 6px
+}
+
+/* 1枚だけのときに中央寄せにならないように追加 */
+#bcard-hdn {
+    /* opacity: 0; */
+    visibility: hidden;
 }

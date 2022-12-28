@@ -10,11 +10,21 @@
 // document.querySelector('#test1').addEventListener('click', () =>
 //     hideText()
 //     );
-document.querySelector('#ddl').addEventListener('click', () => 
-    ddlEdit()
-);
+// document.querySelector('#ddl').addEventListener('click', () => 
+//     ddlEdit()
+// );
 
-const ddlEdit = () => {
-    const prompt = document.querySelector('#prompt');
-    prompt.innerAdjacentHTML('beforeend', '<option value="default"  id="prompt" selected="selected">SortByCompany</option>');;
-}
+// const ddlEdit = () => {
+//     const getFlg = document.querySelector('#default');
+//     if(getFlg){
+//         return;
+//     }else{
+//         const ddl = document.querySelector('#ddl');
+//         const defaultElement = '<option value="default"  id="default" >Default</option>'
+//         ddl.insertAdjacentHTML('beforeend', defaultElement);
+
+//         const prompt = document.querySelector('#prompt');
+//         ddl.removeChild(prompt);
+//     }
+
+// }

@@ -71,3 +71,5 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'active_record_union'
+
